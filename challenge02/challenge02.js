@@ -19,8 +19,8 @@ Parece que los números tienen algo que ver con el código ASCII.
 Los espacios en blanco parece que son simplemente espacios...
 */
 /* ascii 97 - 122 */
-var codigo = "11610497110107115 102111114 11210897121105110103 9911110010110998101114 11210810197115101 11510497114101"
-var letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n',
+const codigo = "11610497110107115 102111114 11210897121105110103 9911110010110998101114 11210810197115101 11510497114101"
+const letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n',
                 'o','p','q','r','s','t','u','v','w','x','y','z']
 function decifrarMsj(codigo){
     let respuesta = ""
