@@ -20,7 +20,6 @@ function isValidUser(user){
     return true
 }
 
-
 async function getUsers() {
     let validUsers = 0
     let line = ""
@@ -45,4 +44,4 @@ async function getUsers() {
     })
 }
 
-console.log(getUsers())
+//console.log(getUsers())
