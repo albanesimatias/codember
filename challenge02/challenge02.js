@@ -32,11 +32,9 @@ function decifrarMsj(codigo){
         }
         if(codigo.charAt(i)==9){
             key = codigo.substring(i,i+2)
-            console.log(letras[key-97])
             i+=1
         } else {
             key = codigo.substring(i,i+3)
-            console.log(letras[key-97])
             i+=2
         }
         respuesta += letras[key-97]
