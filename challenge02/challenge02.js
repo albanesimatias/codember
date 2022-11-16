@@ -39,8 +39,7 @@ function decifrarMsj(codigo){
         }
         respuesta += letras[key-97]
     }
-    console.log(respuesta)
     return respuesta
 }
 
-decifrarMsj(codigo)
+console.log(decifrarMsj(codigo))
