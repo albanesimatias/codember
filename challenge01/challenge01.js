@@ -1,47 +1,10 @@
-function isValidUser(user){
-    if(!user.match("usr:.+")){
-        return false;
-    }
-    if(!user.match("eme:.+")){
-        return false;
-    }
-    if(!user.match("psw:.+")){
-        return false;
-    }
-    if(!user.match("age:.+")){
-        return false;
-    }
-    if(!user.match("loc:.+")){
-        return false;
-    }   
-    if(!user.match("fll:.+")){
-        return false;
-    }
-    return true
-}
-
 async function getUsers() {
-    let validUsers = 0
-    let line = ""
-    let lastValidUser = ""
+    const KEYS = ['usr', 'eme', 'psw', 'age', 'loc', 'fll']
     return await fetch("/challenge01/users.txt").then(res => res.text()).then(content => {
-        let users = content.split("\n")
-        for(let i = 0; i<users.length; i++){
-            while(i < users.length && users[i].length > 1){
-                line += " "+users[i]
-                i++
-            }
-            if(isValidUser(line)){
-                validUsers++
-                lastValidUser = line
-            }
-            line = ""
-        }
-        let index = lastValidUser.indexOf("usr:")+4
-        let lastIndex = lastValidUser.substring(index).indexOf(" ")
-        lastValidUser = lastValidUser.substring(index, index+lastIndex)
-        return {lastValidUser, validUsers}
+        const validUsers = content.split(/\r?\n\r?\n/).filter(user => KEYS.every(key => user.includes(key)))
+        let lastValidUser = validUsers[validUsers.length - 1].split(" ").filter(user => user.includes('usr'))[0].split(':')[1]
+        console.log(validUsers.length, lastValidUser)
     })
 }
 
-console.log(getUsers())
+getUsers()
