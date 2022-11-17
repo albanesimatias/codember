@@ -24,7 +24,7 @@ async function getUsers() {
     let validUsers = 0
     let line = ""
     let lastValidUser = ""
-    return await fetch("./users.txt").then(res => res.text()).then(content => {
+    return await fetch("/challenge01/users.txt").then(res => res.text()).then(content => {
         let users = content.split("\n")
         for(let i = 0; i<users.length; i++){
             while(i < users.length && users[i].length > 1){
@@ -44,4 +44,4 @@ async function getUsers() {
     })
 }
 
-//console.log(getUsers())
+console.log(getUsers())
