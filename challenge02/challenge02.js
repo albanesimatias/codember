@@ -23,11 +23,11 @@ const codigo = "11610497110107115 102111114 11210897121105110103 991111001011099
 const letras = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n',
                 'o','p','q','r','s','t','u','v','w','x','y','z']
 function decifrarMsj(codigo){
-    let respuesta = ""
+    let mensaje = ""
     let key = "97"
     for(let i=0; i<codigo.length; i++){
         if(codigo.charAt(i) === " "){
-            respuesta+=" "
+            mensaje+=" "
             continue
         }
         if(codigo.charAt(i)==9){
@@ -37,9 +37,23 @@ function decifrarMsj(codigo){
             key = codigo.substring(i,i+3)
             i+=2
         }
-        respuesta += letras[key-97]
+        mensaje += letras[key-97]
     }
-    return respuesta
+    return mensaje
 }
 
-console.log(decifrarMsj(codigo))
+//Version 2 usando metodos de arrays y strings
+
+function descifrarMsjV2(codigo) {
+    let mensaje = ""
+    codigo.split(" ").map(asciiWord => { // separo cada numero como una palabra
+        let asciiChars = asciiWord.match(/1\d{2}|9\d{1}/g) // armo un array de chars Ascii
+        mensaje += asciiChars.map(ascii => String.fromCharCode(ascii)) // cambio los ascii por sus letras
+        .toString().replaceAll(',',"")+" " // convierto el array de chars en un string y elimino las comas
+                                           // finalmente se concatena la palabra al mensaje
+    })
+    return mensaje
+}
+
+//console.log(decifrarMsj(codigo))
+console.log(descifrarMsjV2(codigo))
