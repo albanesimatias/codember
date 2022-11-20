@@ -30,7 +30,7 @@ function decifrarMsj(codigo){
             mensaje+=" "
             continue
         }
-        if(codigo.charAt(i)==9){
+        if(codigo.charAt(i)>=2){
             key = codigo.substring(i,i+2)
             i+=1
         } else {
