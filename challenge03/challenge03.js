@@ -23,7 +23,7 @@ const colors = [
             size=1
         if(colors[i]!=colors[i+1] && colors[i]!=colors[i+2]){
             size=2
-            if(size > maxSize)
+            if(size>maxSize)
                 maxSize=size
         }
     }
