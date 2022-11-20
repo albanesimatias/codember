@@ -50,8 +50,7 @@ function descifrarMsjV2(codigo) {
         let asciiChars = asciiWord.match(/1\d{2}|9\d{1}/g) // armo un array de chars Ascii
         mensaje += asciiChars.map(ascii => String.fromCharCode(ascii)) // cambio los ascii por sus letras
         .toString().replaceAll(',',"")+" " // convierto el array de chars en un string y elimino las comas
-                                           // finalmente se concatena la palabra al mensaje
-    })
+    })                                     // finalmente se concatena la palabra al mensaje
     return mensaje
 }
 
