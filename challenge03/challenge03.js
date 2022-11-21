@@ -10,6 +10,10 @@ const colors = [
     let lastColor = ""
     let size = 2
     let maxSize = 1
+
+    if(colors.length === 1) return 1 + " " + colors[0]
+    if(colors.length === 2) return 2 + " " + colors[1]
+
     for(let i=0; i<colors.length-2; i++){
         if(colors[i]!=colors[i+1] && colors[i] == colors[i+2]){
             size++
@@ -19,22 +23,19 @@ const colors = [
             }
             continue
         }
-        if(colors[i]==colors[i+1])
-            size=1
+        if(colors[i]==colors[i+1]) size=1
         if(colors[i]!=colors[i+1] && colors[i]!=colors[i+2]){
             size=2
-            if(size>maxSize)
-                maxSize=size
+            if(size>maxSize) maxSize=size
         }
     }
-    if(maxSize < 3)
-        lastColor = colors[colors.length-1]
-    return maxSize+" "+lastColor
+    return maxSize +" " + (maxSize>2 ? lastColor : colors[colors.length-1])
   }
 
-  //console.log(getMaxZebra(['red', 'blue', 'red', 'blue', 'green'])); // -> 4, blue
+  console.log(getMaxZebra(['red', 'blue', 'red', 'blue', 'green'])); // -> 4, blue
   console.log(getMaxZebra(['green', 'red', 'blue', 'gray'])); // -> 2, gray
   console.log(getMaxZebra(['blue', 'blue', 'blue', 'blue'])); // -> 1, blue
-  //console.log(getMaxZebra(['red', 'green', 'red', 'green', 'red', 'green'])); // -> 6, green
-  //console.log(getMaxZebra(['blue', 'red', 'blue', 'red', 'gray'])); // -> 4, red
-  //console.log(getMaxZebra(colors)); // -> 30, red
+  console.log(getMaxZebra(['red', 'green', 'red', 'green', 'red', 'green'])); // -> 6, green
+  console.log(getMaxZebra(['blue', 'red', 'blue', 'red', 'gray'])); // -> 4, red
+  console.log(getMaxZebra(["red"])); 
+  console.log(getMaxZebra(colors)); // -> 30, red
