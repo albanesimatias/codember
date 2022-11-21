@@ -23,8 +23,7 @@ const colors = [
             }
             continue
         }
-        if(colors[i]==colors[i+1]) size=1
-        if(colors[i]!=colors[i+1] && colors[i]!=colors[i+2]){
+        if(colors[i]!=colors[i+2]){
             size=2
             if(size>maxSize) maxSize=size
         }
@@ -37,5 +36,5 @@ const colors = [
   console.log(getMaxZebra(['blue', 'blue', 'blue', 'blue'])); // -> 1, blue
   console.log(getMaxZebra(['red', 'green', 'red', 'green', 'red', 'green'])); // -> 6, green
   console.log(getMaxZebra(['blue', 'red', 'blue', 'red', 'gray'])); // -> 4, red
-  console.log(getMaxZebra(["red"])); 
+  console.log(getMaxZebra(["blue","red","blue","pink"])); 
   console.log(getMaxZebra(colors)); // -> 30, red
